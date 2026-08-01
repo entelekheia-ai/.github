@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://entelekheia.ai">entelekheia.ai</a> ·
-  <a href="#murici--a-chat-ui-for-running-agents">Murici</a> ·
+  <a href="#murici--a-desktop-chat-ui-for-running-agents">Murici</a> ·
   <a href="#agent--an-open-standard-for-portable-agents">.agent</a> ·
   <a href="#vibe-ops--repositories-that-start-organized">vibe-ops</a> ·
   <a href="mailto:hello@entelekheia.ai">hello@entelekheia.ai</a>
@@ -24,7 +24,7 @@ and aligned with human intention.
 
 ---
 
-## Murici — a chat UI for running agents
+## Murici — a desktop chat UI for running agents
 
 <a href="https://github.com/entelekheia-ai/murici/releases"><img src="https://img.shields.io/github/v/release/entelekheia-ai/murici?label=release" alt="Latest release"></a>
 <a href="https://github.com/entelekheia-ai/murici/blob/main/license"><img src="https://img.shields.io/badge/license-Apache--2.0%20%2B%20MIT-blue.svg" alt="Apache-2.0 and MIT"></a>
@@ -34,8 +34,8 @@ and aligned with human intention.
   <img src="https://github.com/entelekheia-ai/.github/raw/main/assets/murici.png" width="100%" alt="Murici running the Fridge Assistant agent: the conversation on the left, and on the right the agent's state history — responsive marked done, show_catalog in progress, and the remaining states still pending.">
 </p>
 
-A lightweight desktop and web chat UI for running `.agent` behaviours — the portable agent format
-described below. Drag a bundle onto the window and it compiles and starts. The panel on the right tracks
+A lightweight desktop app for running `.agent` behaviours — the portable agent format described below.
+Drag a bundle onto the window and it compiles and starts. The panel on the right tracks
 the run as it happens: which states are done, which one is executing, which are still ahead, alongside
 the agent's own description and its execution graph. A conversation becomes something you watch rather
 than infer.
