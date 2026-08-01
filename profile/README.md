@@ -2,33 +2,51 @@
 
 <p align="center">
   <b>Intelligence, brought into form.</b><br>
-  An independent research lab building the open protocols, runtimes and interfaces
-  for the era of native AI.
+  Revealing latent potential in people, systems, and technology.
 </p>
 
 <p align="center">
   <a href="https://entelekheia.ai">entelekheia.ai</a> ·
+  <a href="#murici--a-chat-ui-for-running-agents">Murici</a> ·
   <a href="#agent--an-open-standard-for-portable-agents">.agent</a> ·
-  <a href="#murici--a-chat-ui-that-runs-them">Murici</a> ·
   <a href="#vibe-ops--repositories-that-start-organized">vibe-ops</a> ·
-  <a href="#research">Research</a> ·
   <a href="mailto:hello@entelekheia.ai">hello@entelekheia.ai</a>
 </p>
 
 ---
 
-Models got capable faster than the systems around them did. An agent today is a prompt in someone's
-codebase: it cannot be handed to another runtime, its behaviour cannot be checked before it runs, and
-the only way to find out what it does is to talk to it and see.
+Entelékheia develops foundational technologies, open protocols, and next-generation interfaces designed
+for the era of native artificial intelligence.
 
-We think the missing piece is structure. Everything a machine can guarantee — which states exist, which
-transitions are legal, which capabilities may be called — should be checked before a model is ever asked
-anything. Everything only a model can infer should stay in prose, where it belongs. Draw that line
-clearly and an agent stops being an artifact of one codebase and becomes a file you can pass around.
+The lab operates at the intersection of structural systems, cognitive computing, and intuitive
+interfaces. This continuous practice guarantees that intelligent systems remain resilient, predictable,
+and aligned with human intention.
 
-That conviction shows up in three layers of work: **open specifications** that nobody has to ask
-permission to implement, **core runtimes** that execute them the same way twice, and **applied tools**
-that put both in front of a person.
+---
+
+## Murici — a chat UI for running agents
+
+<a href="https://github.com/entelekheia-ai/murici/releases"><img src="https://img.shields.io/github/v/release/entelekheia-ai/murici?label=release" alt="Latest release"></a>
+<a href="https://github.com/entelekheia-ai/murici/blob/main/license"><img src="https://img.shields.io/badge/license-Apache--2.0%20%2B%20MIT-blue.svg" alt="Apache-2.0 and MIT"></a>
+<a href="https://github.com/entelekheia-ai/murici"><img src="https://img.shields.io/badge/desktop-Electron-47848F?logo=electron&logoColor=white" alt="Electron desktop"></a>
+
+<p align="center">
+  <img src="https://github.com/entelekheia-ai/.github/raw/main/assets/murici.png" width="100%" alt="Murici running the Fridge Assistant agent: the conversation on the left, and on the right the agent's state history — responsive marked done, show_catalog in progress, and the remaining states still pending.">
+</p>
+
+A lightweight desktop and web chat UI for running `.agent` behaviours — the portable agent format
+described below. Drag a bundle onto the window and it compiles and starts. The panel on the right tracks
+the run as it happens: which states are done, which one is executing, which are still ahead, alongside
+the agent's own description and its execution graph. A conversation becomes something you watch rather
+than infer.
+
+Routing is deterministic. The model signals intent through a tool call, a WASM kernel decides the
+transition, and the interface updates from the effects it returns. Chats, models and keys live in
+IndexedDB on your own machine — there is no account and no server to sign into. Hosted providers and
+locally discovered LLM servers connect on the same footing.
+
+**[Download](https://github.com/entelekheia-ai/murici/releases/latest)** (macOS · Windows) ·
+**[Source](https://github.com/entelekheia-ai/murici)** · open source
 
 ---
 
@@ -38,6 +56,12 @@ that put both in front of a person.
 <a href="https://open-vsx.org/extension/dot-agent/vscode-dot-agent"><img src="https://img.shields.io/open-vsx/v/dot-agent/vscode-dot-agent?label=.agent%20DSL" alt=".agent DSL editor extension"></a>
 <a href="https://github.com/dot-agent-spec/platform/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
 <a href="https://dot-agent.ai"><img src="https://img.shields.io/badge/spec-dot--agent.ai-1f6feb" alt="Specification"></a>
+
+An agent today is a prompt inside somebody's codebase: it cannot be handed to another runtime, and the
+only way to learn what it does is to talk to it and find out. `.agent` draws the line differently.
+Everything a machine can guarantee — which states exist, which transitions are legal, which capabilities
+may be called — is checked before a model is ever asked anything. Everything only a model can infer stays
+in prose, where it belongs.
 
 An agent is two files. A `.description` declares the contract — what it needs, what it can do, what it
 returns. A `.behavior` declares the flow: a flat state machine where the prompt lives in `goal` and
@@ -83,31 +107,6 @@ and [Open VSX](https://open-vsx.org/extension/dot-agent/vscode-dot-agent).
 
 ---
 
-## Murici — a chat UI that runs them
-
-<a href="https://github.com/entelekheia-ai/murici/releases"><img src="https://img.shields.io/github/v/release/entelekheia-ai/murici?label=release" alt="Latest release"></a>
-<a href="https://github.com/entelekheia-ai/murici/blob/main/license"><img src="https://img.shields.io/badge/license-Apache--2.0%20%2B%20MIT-blue.svg" alt="Apache-2.0 and MIT"></a>
-<a href="https://github.com/entelekheia-ai/murici"><img src="https://img.shields.io/badge/desktop-Electron-47848F?logo=electron&logoColor=white" alt="Electron desktop"></a>
-
-<p align="center">
-  <img src="https://github.com/entelekheia-ai/.github/raw/main/assets/murici.png" width="100%" alt="Murici running the Fridge Assistant agent: the conversation on the left, and on the right the agent's state history — responsive marked done, show_catalog in progress, and the remaining states still pending.">
-</p>
-
-A lightweight desktop and web chat UI for running `.agent` behaviours. Drag a bundle onto the window and
-it compiles and starts. The panel on the right tracks the run as it happens — which states are done,
-which one is executing, which are still ahead — alongside the agent's own description and its execution
-graph. A conversation becomes something you watch rather than infer.
-
-Routing is deterministic: the model signals intent through a tool call, the WASM kernel decides the
-transition, and the UI updates from the effects it returns. Chats, models and keys live in IndexedDB on
-your own machine — there is no account and no server to sign into. It connects to hosted providers and
-discovers local LLM servers on the same footing.
-
-**[Download](https://github.com/entelekheia-ai/murici/releases/latest)** (macOS · Windows) ·
-**[Source](https://github.com/entelekheia-ai/murici)** · open source
-
----
-
 ## vibe-ops — repositories that start organized
 
 <a href="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml"><img src="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml/badge.svg" alt="check"></a>
@@ -127,35 +126,6 @@ It is the tooling we built because our own repositories kept drifting from their
 reads your repository and writes nothing into it, so there is no per-repo copy to maintain.
 
 **[Repository](https://github.com/entelekheia-ai/vibe-ops)** · Apache-2.0
-
----
-
-## Research
-
-The lab works at the intersection of artificial intelligence, cognitive science and foundational systems
-design. Three questions run underneath everything above:
-
-- **Cognitive orchestration** — coordinating memory, reasoning and action across intelligent systems.
-- **Agent ecosystems** — portable architectures for composing and evolving autonomous agents.
-- **Distributed knowledge** — organizing collective intelligence across human networks and AI nodes.
-
----
-
-## Principles
-
-**Clarity before complexity.** The most powerful technical ideas have an inherent simplicity; maturity
-shows up as architecture someone else can read.
-
-**Systems outlast tools.** We build structures meant to still be standing when the current generation of
-tooling is gone.
-
-**Intelligence requires structure.** Raw capability becomes coherent behaviour only inside an
-architecture that constrains it.
-
-**Technology should amplify thought.** Software that merges into the work, rather than demanding
-attention for itself.
-
-**Long-term vision over trend cycles.** Technical conviction over the hype window.
 
 ---
 
