@@ -35,6 +35,7 @@ that put both in front of a person.
 ## .agent — an open standard for portable agents
 
 <a href="https://www.npmjs.com/package/@dot-agent/cli"><img src="https://img.shields.io/npm/v/%40dot-agent%2Fcli?label=%40dot-agent%2Fcli" alt="npm @dot-agent/cli"></a>
+<a href="https://open-vsx.org/extension/dot-agent/vscode-dot-agent"><img src="https://img.shields.io/open-vsx/v/dot-agent/vscode-dot-agent?label=.agent%20DSL" alt=".agent DSL editor extension"></a>
 <a href="https://github.com/dot-agent-spec/platform/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
 <a href="https://dot-agent.ai"><img src="https://img.shields.io/badge/spec-dot--agent.ai-1f6feb" alt="Specification"></a>
 
@@ -72,7 +73,10 @@ dot-agent pack --dir . --out my-agent.agent
 ```
 
 The grammar, parser and FSM kernel are Rust compiled to WASM, so the same behaviour runs in a browser, a
-CLI or a desktop app without a second implementation to drift.
+CLI or a desktop app without a second implementation to drift. The **.agent DSL** editor extension adds
+highlighting, completion, go-to-definition and live diagnostics through a bundled language server —
+on [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dot-agent.vscode-dot-agent)
+and [Open VSX](https://open-vsx.org/extension/dot-agent/vscode-dot-agent).
 
 **[Specification](https://dot-agent.ai)** · **[Monorepo](https://github.com/dot-agent-spec/platform)**
 · Apache-2.0, developed under independent governance
@@ -85,17 +89,14 @@ CLI or a desktop app without a second implementation to drift.
 <a href="https://github.com/entelekheia-ai/murici/blob/main/license"><img src="https://img.shields.io/badge/license-Apache--2.0%20%2B%20MIT-blue.svg" alt="Apache-2.0 and MIT"></a>
 <a href="https://github.com/entelekheia-ai/murici"><img src="https://img.shields.io/badge/desktop-Electron-47848F?logo=electron&logoColor=white" alt="Electron desktop"></a>
 
-<!--
-  SCREENSHOT SLOT — drop the capture at assets/murici.png in this repo, then uncomment.
-  <p align="center">
-    <img src="https://github.com/entelekheia-ai/.github/raw/main/assets/murici.png" width="100%" alt="Murici running an agent, with its state graph beside the conversation">
-  </p>
--->
+<p align="center">
+  <img src="https://github.com/entelekheia-ai/.github/raw/main/assets/murici.png" width="100%" alt="Murici running the Fridge Assistant agent: the conversation on the left, and on the right the agent's state history — responsive marked done, show_catalog in progress, and the remaining states still pending.">
+</p>
 
 A lightweight desktop and web chat UI for running `.agent` behaviours. Drag a bundle onto the window and
-it compiles and starts; the state graph beside the conversation shows which state you are in, which
-states you have visited, and which transition just fired — so a run is something you watch rather than
-infer.
+it compiles and starts. The panel on the right tracks the run as it happens — which states are done,
+which one is executing, which are still ahead — alongside the agent's own description and its execution
+graph. A conversation becomes something you watch rather than infer.
 
 Routing is deterministic: the model signals intent through a tool call, the WASM kernel decides the
 transition, and the UI updates from the effects it returns. Chats, models and keys live in IndexedDB on
