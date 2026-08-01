@@ -9,7 +9,7 @@
   <a href="https://entelekheia.ai">entelekheia.ai</a> ·
   <a href="#murici--a-desktop-chat-ui-for-running-agents">Murici</a> ·
   <a href="#agent--an-open-standard-for-portable-agents">.agent</a> ·
-  <a href="#vibe-ops--repositories-that-start-organized">vibe-ops</a> ·
+  <a href="#vibe-ops--context-engineering-for-repositories">vibe-ops</a> ·
   <a href="mailto:hello@entelekheia.ai">hello@entelekheia.ai</a>
 </p>
 
@@ -107,23 +107,34 @@ and [Open VSX](https://open-vsx.org/extension/dot-agent/vscode-dot-agent).
 
 ---
 
-## vibe-ops — repositories that start organized
+## vibe-ops — context engineering for repositories
 
 <a href="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml"><img src="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml/badge.svg" alt="check"></a>
 <a href="https://github.com/entelekheia-ai/vibe-ops/releases"><img src="https://img.shields.io/github/v/release/entelekheia-ai/vibe-ops?label=release" alt="Latest release"></a>
 <a href="https://github.com/entelekheia-ai/vibe-ops/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
 
-A Claude Code plugin. One command lays down the governance, docs, licensing and agent configuration a
-project needs; the remaining skills keep them true as the work moves — and every skill that touches a
-file an agent reads at session start validates the repository afterwards.
+<p align="center">
+  <img src="https://github.com/entelekheia-ai/.github/raw/main/assets/vibe-ops.png" width="820" alt="The vibe-ops slash commands listed in Claude Code: repo-setup, new-adr, new-rfc, new-plan, new-task, close-plan, close-task, authoring-agents-md, authoring-readme and license-setup.">
+</p>
+
+A repository's `AGENTS.md`, its rules and its skills are not documentation *about* the project — they are
+the context an agent is handed before it does anything. This Claude Code plugin authors them, and governs
+when each one loads: the map at session start, a rule scoped to the folder it governs, a skill only when
+it is asked for.
+
+Keeping that true is the harder half. An agent working through a task learns a great deal inside a single
+run and forgets it at the end — the notes are deleted along with the work. So closing a task or a plan
+here routes what the work taught back into those same files, and anything mechanically checkable becomes
+a guard rather than a sentence, because a sentence is only followed by whoever read it. The repository
+becomes the thing that remembers.
 
 ```bash
 claude plugin marketplace add entelekheia-ai/vibe-ops
 claude plugin install vibe-ops@entelekheia
 ```
 
-It is the tooling we built because our own repositories kept drifting from their own documentation. It
-reads your repository and writes nothing into it, so there is no per-repo copy to maintain.
+Every skill reads the *target* repository's own templates and conventions, so one installed plugin adapts
+to each repo instead of being copied into all of them and drifting apart.
 
 **[Repository](https://github.com/entelekheia-ai/vibe-ops)** · Apache-2.0
 
