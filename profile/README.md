@@ -8,11 +8,11 @@
 <p align="center">
   <a href="https://entelekheia.ai">entelekheia.ai</a> ·
   <a href="#murici--a-desktop-chat-ui-for-running-agents">Murici</a> ·
-  <a href="#cerrado--your-mailbox-drawn-as-a-landscape">Cerrado</a> ·
   <a href="#agent--an-open-standard-for-portable-agents">.agent</a> ·
-  <a href="#vibe-ops--context-engineering-for-repositories">vibe-ops</a> ·
-  <a href="#claude-code-plugins--small-tools-for-agentic-work">Plugins</a> ·
+  <a href="#cerrado--your-mailbox-drawn-as-a-landscape">Cerrado</a> ·
   <a href="#ref-id--one-identifier-for-anything-declared">ref-id</a> ·
+  <a href="#skills--claude-code-plugins-for-agentic-work">skills</a> ·
+  <a href="#vibe-ops--context-engineering-for-repositories">vibe-ops</a> ·
   <a href="mailto:hello@entelekheia.ai">hello@entelekheia.ai</a>
 </p>
 
@@ -50,34 +50,6 @@ locally discovered LLM servers connect on the same footing.
 
 **[Download](https://github.com/entelekheia-ai/murici/releases/latest)** (macOS · Windows) ·
 **[Source](https://github.com/entelekheia-ai/murici)** · open source
-
----
-
-## Cerrado — your mailbox, drawn as a landscape
-
-<a href="https://github.com/entelekheia-ai/gmail-addon/releases/latest"><img src="https://img.shields.io/github/v/release/entelekheia-ai/gmail-addon?sort=semver&label=release" alt="Latest release"></a>
-<a href="https://github.com/entelekheia-ai/gmail-addon"><img src="https://img.shields.io/badge/Chromium-WebGPU-4285F4?logo=googlechrome&logoColor=white" alt="Chromium with WebGPU"></a>
-
-<p align="center">
-  <a href="https://daniloborg.es/experiment/mail-graph/"><img src="https://github.com/entelekheia-ai/.github/raw/main/assets/cerrado.png" width="100%" alt="The Cerrado landscape: correspondents as nodes, settled into territories of mail, each cluster a region of the mailbox."></a>
-</p>
-
-A mail client answers *what arrived*, and sorting by date is the only question it asks. It cannot show
-that four people account for most of a decade of correspondence, or that a folder you think of as work is
-three quarters receipts. Those are questions about the **shape** of a mailbox.
-
-Cerrado draws that shape. A browser extension adds one item to Gmail's own navigation rail; select it and
-the message list gives way to a WebGPU landscape — correspondents are nodes, conversations pull them
-together, and the regions they settle into are the territories your mail actually has. Lenses cut the
-same map several ways without moving anything, and a search paints its matches on the map instead of
-filtering a list.
-
-It reads only the page Gmail has already rendered in your tab, keeps what it read in that browser, and
-makes no network request of any kind — no API key, no sign-in, no telemetry.
-
-**[Try it without installing](https://daniloborg.es/experiment/mail-graph/)** (a generated mailbox) ·
-**[Download](https://github.com/entelekheia-ai/gmail-addon/releases/latest)** (Chromium with WebGPU) ·
-free for personal use
 
 ---
 
@@ -138,67 +110,31 @@ and [Open VSX](https://open-vsx.org/extension/dot-agent/vscode-dot-agent).
 
 ---
 
-## vibe-ops — context engineering for repositories
+## Cerrado — your mailbox, drawn as a landscape
 
-<a href="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml"><img src="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml/badge.svg" alt="check"></a>
-<a href="https://github.com/entelekheia-ai/vibe-ops/releases"><img src="https://img.shields.io/github/v/release/entelekheia-ai/vibe-ops?label=release" alt="Latest release"></a>
-<a href="https://github.com/entelekheia-ai/vibe-ops/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
+<a href="https://github.com/entelekheia-ai/gmail-addon/releases/latest"><img src="https://img.shields.io/github/v/release/entelekheia-ai/gmail-addon?sort=semver&label=release" alt="Latest release"></a>
+<a href="https://github.com/entelekheia-ai/gmail-addon"><img src="https://img.shields.io/badge/Chromium-WebGPU-4285F4?logo=googlechrome&logoColor=white" alt="Chromium with WebGPU"></a>
 
 <p align="center">
-  <img src="https://github.com/entelekheia-ai/.github/raw/main/assets/vibe-ops.png" width="820" alt="The vibe-ops slash commands listed in Claude Code: repo-setup, new-adr, new-rfc, new-plan, new-task, close-plan, close-task, authoring-agents-md, authoring-readme and license-setup.">
+  <a href="https://daniloborg.es/experiment/mail-graph/"><img src="https://github.com/entelekheia-ai/.github/raw/main/assets/cerrado.png" width="100%" alt="The Cerrado landscape: correspondents as nodes, settled into territories of mail, each cluster a region of the mailbox."></a>
 </p>
 
-A repository's `AGENTS.md`, its rules and its skills are not documentation *about* the project — they are
-the context an agent is handed before it does anything. This Claude Code plugin authors them, and governs
-when each one loads: the map at session start, a rule scoped to the folder it governs, a skill only when
-it is asked for.
+A mail client answers *what arrived*, and sorting by date is the only question it asks. It cannot show
+that four people account for most of a decade of correspondence, or that a folder you think of as work is
+three quarters receipts. Those are questions about the **shape** of a mailbox.
 
-Keeping that true is the harder half. An agent working through a task learns a great deal inside a single
-run and forgets it at the end — the notes are deleted along with the work. So closing a task or a plan
-here routes what the work taught back into those same files, and anything mechanically checkable becomes
-a guard rather than a sentence, because a sentence is only followed by whoever read it. The repository
-becomes the thing that remembers.
+Cerrado draws that shape. A browser extension adds one item to Gmail's own navigation rail; select it and
+the message list gives way to a WebGPU landscape — correspondents are nodes, conversations pull them
+together, and the regions they settle into are the territories your mail actually has. Lenses cut the
+same map several ways without moving anything, and a search paints its matches on the map instead of
+filtering a list.
 
-```bash
-npm i -g @entelekheia/vibe-ops-cli          # the CLI: `vibe-ops` on PATH, and the gate
+It reads only the page Gmail has already rendered in your tab, keeps what it read in that browser, and
+makes no network request of any kind — no API key, no sign-in, no telemetry.
 
-claude plugin marketplace add entelekheia-ai/public-plugin
-claude plugin install vibe-ops@entelekheia  # the skills, agents and hooks
-```
-
-The plugin writes and the CLI checks: `vibe-ops check` is the commit gate, and the same checks are served
-to the agent over MCP. Every skill reads the *target* repository's own templates and conventions, so one
-installed plugin adapts to each repo instead of being copied into all of them and drifting apart.
-
-**[Repository](https://github.com/entelekheia-ai/vibe-ops)** · Apache-2.0
-
----
-
-## Claude Code plugins — small tools for agentic work
-
-<a href="https://github.com/entelekheia-ai/public-plugin/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
-<a href="https://github.com/entelekheia-ai/public-plugin"><img src="https://img.shields.io/badge/Claude%20Code-plugins-000?logo=anthropic&logoColor=white" alt="Claude Code plugins"></a>
-
-The skills and subagents this lab runs its own work with, one plugin per job, each installable on its
-own:
-
-| Plugin | What it gives you |
-|---|---|
-| `delegation` | Decide where delegated work runs — the main loop, one subagent or a Workflow — and on which model and effort, from a routing table you tune to your own sessions; plus read-only `plan-scout`, `reviewer`, `fact-sheet` and `blind-run` agents, and an `implementer` |
-| `method` | Carry a plan through its remaining tracks unattended, paced against the usage limit; route what a piece of work taught to the surface built for that kind of fact |
-| `publishing` | Turn the skills and agents you wrote for your own setup into publishable ones — audit, generalize, blind-review, release |
-| `release` | Stable and beta release channels for npm packages, and a first publish straight to CI through npm trusted publishing |
-| `machine` | Keep a development machine working — Time Machine exclusions for regenerable caches, and small repairs after tool updates |
-| `vibe-ops` | The repository governance described above |
-
-```bash
-claude plugin marketplace add entelekheia-ai/public-plugin
-claude plugin install delegation@entelekheia
-
-npx skills add entelekheia-ai/public-plugin   # skills only, for Codex, Cursor, OpenCode, Gemini CLI and others
-```
-
-**[Catalog](https://github.com/entelekheia-ai/public-plugin)** · Apache-2.0
+**[Try it without installing](https://daniloborg.es/experiment/mail-graph/)** (a generated mailbox) ·
+**[Download](https://github.com/entelekheia-ai/gmail-addon/releases/latest)** (Chromium with WebGPU) ·
+free for personal use
 
 ---
 
@@ -232,6 +168,70 @@ implementations exist today, and a differential test runs all four over every in
 names, failing on the first disagreement.
 
 **[Repository](https://github.com/entelekheia-ai/ref-id)** · **[Specification](https://github.com/entelekheia-ai/ref-id/tree/main/spec)** · Apache-2.0
+
+---
+
+## skills — Claude Code plugins for agentic work
+
+<a href="https://github.com/entelekheia-ai/skills/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
+<a href="https://github.com/entelekheia-ai/skills"><img src="https://img.shields.io/badge/Claude%20Code-plugins-000?logo=anthropic&logoColor=white" alt="Claude Code plugins"></a>
+
+The skills and subagents this lab runs its own work with, one plugin per job, each installable on its
+own:
+
+| Plugin | What it gives you |
+|---|---|
+| `delegation` | Decide where delegated work runs — the main loop, one subagent or a Workflow — and on which model and effort, from a routing table you tune to your own sessions; plus read-only `plan-scout`, `reviewer`, `fact-sheet` and `blind-run` agents, and an `implementer` |
+| `method` | Carry a plan through its remaining tracks unattended, paced against the usage limit; route what a piece of work taught to the surface built for that kind of fact |
+| `publishing` | Turn the skills and agents you wrote for your own setup into publishable ones — audit, generalize, blind-review, release |
+| `release` | Stable and beta release channels for npm packages, and a first publish straight to CI through npm trusted publishing |
+| `machine` | Keep a development machine working — Time Machine exclusions for regenerable caches, and small repairs after tool updates |
+| `vibe-ops` | The repository governance described below |
+
+```bash
+claude plugin marketplace add entelekheia-ai/skills
+claude plugin install delegation@entelekheia
+
+npx skills add entelekheia-ai/skills   # skills only, for Codex, Cursor, OpenCode, Gemini CLI and others
+```
+
+**[Catalog](https://github.com/entelekheia-ai/skills)** · Apache-2.0
+
+---
+
+## vibe-ops — context engineering for repositories
+
+<a href="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml"><img src="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml/badge.svg" alt="check"></a>
+<a href="https://github.com/entelekheia-ai/vibe-ops/releases"><img src="https://img.shields.io/github/v/release/entelekheia-ai/vibe-ops?label=release" alt="Latest release"></a>
+<a href="https://github.com/entelekheia-ai/vibe-ops/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
+
+<p align="center">
+  <img src="https://github.com/entelekheia-ai/.github/raw/main/assets/vibe-ops.png" width="820" alt="The vibe-ops slash commands listed in Claude Code: repo-setup, new-adr, new-rfc, new-plan, new-task, close-plan, close-task, authoring-agents-md, authoring-readme and license-setup.">
+</p>
+
+A repository's `AGENTS.md`, its rules and its skills are not documentation *about* the project — they are
+the context an agent is handed before it does anything. This Claude Code plugin authors them, and governs
+when each one loads: the map at session start, a rule scoped to the folder it governs, a skill only when
+it is asked for.
+
+Keeping that true is the harder half. An agent working through a task learns a great deal inside a single
+run and forgets it at the end — the notes are deleted along with the work. So closing a task or a plan
+here routes what the work taught back into those same files, and anything mechanically checkable becomes
+a guard rather than a sentence, because a sentence is only followed by whoever read it. The repository
+becomes the thing that remembers.
+
+```bash
+npm i -g @entelekheia/vibe-ops-cli          # the CLI: `vibe-ops` on PATH, and the gate
+
+claude plugin marketplace add entelekheia-ai/skills
+claude plugin install vibe-ops@entelekheia  # the skills, agents and hooks
+```
+
+The plugin writes and the CLI checks: `vibe-ops check` is the commit gate, and the same checks are served
+to the agent over MCP. Every skill reads the *target* repository's own templates and conventions, so one
+installed plugin adapts to each repo instead of being copied into all of them and drifting apart.
+
+**[Repository](https://github.com/entelekheia-ai/vibe-ops)** · Apache-2.0
 
 ---
 
