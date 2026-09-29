@@ -9,6 +9,9 @@
   <a href="https://entelekheia.ai">entelekheia.ai</a> ·
   <a href="#murici--a-desktop-chat-ui-for-running-agents">Murici</a> ·
   <a href="#agent--an-open-standard-for-portable-agents">.agent</a> ·
+  <a href="#cerrado--your-mailbox-drawn-as-a-landscape">Cerrado</a> ·
+  <a href="#ref-id--one-identifier-for-anything-declared">ref-id</a> ·
+  <a href="#skills--claude-code-plugins-for-agentic-work">skills</a> ·
   <a href="#vibe-ops--context-engineering-for-repositories">vibe-ops</a> ·
   <a href="mailto:hello@entelekheia.ai">hello@entelekheia.ai</a>
 </p>
@@ -107,6 +110,95 @@ and [Open VSX](https://open-vsx.org/extension/dot-agent/vscode-dot-agent).
 
 ---
 
+## Cerrado — your mailbox, drawn as a landscape
+
+<a href="https://github.com/entelekheia-ai/gmail-addon/releases/latest"><img src="https://img.shields.io/github/v/release/entelekheia-ai/gmail-addon?sort=semver&label=release" alt="Latest release"></a>
+<a href="https://github.com/entelekheia-ai/gmail-addon"><img src="https://img.shields.io/badge/Chromium-WebGPU-4285F4?logo=googlechrome&logoColor=white" alt="Chromium with WebGPU"></a>
+
+<p align="center">
+  <a href="https://daniloborg.es/experiment/mail-graph/"><img src="https://github.com/entelekheia-ai/.github/raw/main/assets/cerrado.png" width="100%" alt="The Cerrado landscape: correspondents as nodes, settled into territories of mail, each cluster a region of the mailbox."></a>
+</p>
+
+A mail client answers *what arrived*, and sorting by date is the only question it asks. It cannot show
+that four people account for most of a decade of correspondence, or that a folder you think of as work is
+three quarters receipts. Those are questions about the **shape** of a mailbox.
+
+Cerrado draws that shape. A browser extension adds one item to Gmail's own navigation rail; select it and
+the message list gives way to a WebGPU landscape — correspondents are nodes, conversations pull them
+together, and the regions they settle into are the territories your mail actually has. Lenses cut the
+same map several ways without moving anything, and a search paints its matches on the map instead of
+filtering a list.
+
+It reads only the page Gmail has already rendered in your tab, keeps what it read in that browser, and
+makes no network request of any kind — no API key, no sign-in, no telemetry.
+
+**[Try it without installing](https://daniloborg.es/experiment/mail-graph/)** (a generated mailbox) ·
+**[Download](https://github.com/entelekheia-ai/gmail-addon/releases/latest)** (Chromium with WebGPU) ·
+free for personal use
+
+---
+
+## ref-id — one identifier for anything declared
+
+<a href="https://www.npmjs.com/package/@entelekheia/ref-id"><img src="https://img.shields.io/npm/v/%40entelekheia%2Fref-id?label=npm" alt="npm @entelekheia/ref-id"></a>
+<a href="https://crates.io/crates/ref-id"><img src="https://img.shields.io/crates/v/ref-id?label=crates.io" alt="crates.io ref-id"></a>
+<a href="https://pypi.org/project/ref-id/"><img src="https://img.shields.io/pypi/v/ref-id?label=PyPI" alt="PyPI ref-id"></a>
+<a href="https://github.com/entelekheia-ai/ref-id/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
+
+A file path says *where* something is; a content hash says *what its bytes were*. Neither says *what it
+is* for a thing that keeps living after an edit or a move — a rule a gate checks, a record in a
+governance folder, an exported symbol. Each exists because a format declared it by name inside a scope,
+and that declared name is the identity that survives a refactor.
+
+`ref:` is a small scheme built on that rule. It wraps standards that already exist — Package URL, SWHID,
+RFC 5147 — and adds only what they do not say together: which thing, in which state, over which
+population. An identifier that carries a digest resolves to an envelope whose members recompute to it,
+so the digest is a checkable claim rather than a dangling pointer.
+
+```ts
+import { parse } from "@entelekheia/ref-id"
+
+parse("ref:pkg:npm/@acme/scanner-core@0.1.0#Observation")
+// => { status: "ok", type: "pkg", locator: "npm/@acme/scanner-core@0.1.0", ... }
+```
+
+The specification ships as **data** — grammar, tables, digest rules and conformance vectors — so a port
+is checked against vectors rather than re-derived from source. TypeScript, Rust, Swift and Python
+implementations exist today, and a differential test runs all four over every input the specification
+names, failing on the first disagreement.
+
+**[Repository](https://github.com/entelekheia-ai/ref-id)** · **[Specification](https://github.com/entelekheia-ai/ref-id/tree/main/spec)** · Apache-2.0
+
+---
+
+## skills — Claude Code plugins for agentic work
+
+<a href="https://github.com/entelekheia-ai/skills/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
+<a href="https://github.com/entelekheia-ai/skills"><img src="https://img.shields.io/badge/Claude%20Code-plugins-000?logo=anthropic&logoColor=white" alt="Claude Code plugins"></a>
+
+The skills and subagents this lab runs its own work with, one plugin per job, each installable on its
+own:
+
+| Plugin | What it gives you |
+|---|---|
+| `delegation` | Decide where delegated work runs — the main loop, one subagent or a Workflow — and on which model and effort, from a routing table you tune to your own sessions; plus read-only `plan-scout`, `reviewer`, `fact-sheet` and `blind-run` agents, and an `implementer` |
+| `method` | Carry a plan through its remaining tracks unattended, paced against the usage limit; route what a piece of work taught to the surface built for that kind of fact |
+| `publishing` | Turn the skills and agents you wrote for your own setup into publishable ones — audit, generalize, blind-review, release |
+| `release` | Stable and beta release channels for npm packages, and a first publish straight to CI through npm trusted publishing |
+| `machine` | Keep a development machine working — Time Machine exclusions for regenerable caches, and small repairs after tool updates |
+| `vibe-ops` | The repository governance described below |
+
+```bash
+claude plugin marketplace add entelekheia-ai/skills
+claude plugin install delegation@entelekheia
+
+npx skills add entelekheia-ai/skills   # skills only, for Codex, Cursor, OpenCode, Gemini CLI and others
+```
+
+**[Catalog](https://github.com/entelekheia-ai/skills)** · Apache-2.0
+
+---
+
 ## vibe-ops — context engineering for repositories
 
 <a href="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml"><img src="https://github.com/entelekheia-ai/vibe-ops/actions/workflows/check.yml/badge.svg" alt="check"></a>
@@ -129,12 +221,15 @@ a guard rather than a sentence, because a sentence is only followed by whoever r
 becomes the thing that remembers.
 
 ```bash
-claude plugin marketplace add entelekheia-ai/vibe-ops
-claude plugin install vibe-ops@entelekheia
+npm i -g @entelekheia/vibe-ops-cli          # the CLI: `vibe-ops` on PATH, and the gate
+
+claude plugin marketplace add entelekheia-ai/skills
+claude plugin install vibe-ops@entelekheia  # the skills, agents and hooks
 ```
 
-Every skill reads the *target* repository's own templates and conventions, so one installed plugin adapts
-to each repo instead of being copied into all of them and drifting apart.
+The plugin writes and the CLI checks: `vibe-ops check` is the commit gate, and the same checks are served
+to the agent over MCP. Every skill reads the *target* repository's own templates and conventions, so one
+installed plugin adapts to each repo instead of being copied into all of them and drifting apart.
 
 **[Repository](https://github.com/entelekheia-ai/vibe-ops)** · Apache-2.0
 
