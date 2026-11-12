@@ -6,13 +6,13 @@
 </p>
 
 <p align="center">
-  <a href="https://entelekheia.ai">entelekheia.ai</a> ·
   <a href="#murici--a-desktop-chat-ui-for-running-agents">Murici</a> ·
   <a href="#agent--an-open-standard-for-portable-agents">.agent</a> ·
   <a href="#cerrado--your-mailbox-drawn-as-a-landscape">Cerrado</a> ·
   <a href="#ref-id--one-identifier-for-anything-declared">ref-id</a> ·
   <a href="#skills--claude-code-plugins-for-agentic-work">skills</a> ·
-  <a href="#vibe-ops--context-engineering-for-repositories">vibe-ops</a> ·
+  <a href="#vibe-ops--context-engineering-for-repositories">vibe-ops</a> |
+  <a href="https://entelekheia.ai">entelekheia.ai</a> ·
   <a href="mailto:hello@entelekheia.ai">hello@entelekheia.ai</a>
 </p>
 
